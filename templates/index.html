@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>도로 시설물 검색기</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 40px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input, select, button {
+            font-size: 16px;
+            padding: 6px;
+            margin-right: 10px;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        li {
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>도로 시설물 검색기</h1>
+
+    <form method="post">
+        <label>시설물 종류:</label>
+        <select name="category" required>
+            <option value="" disabled selected>선택</option>
+            <option>교량</option>
+            <option>터널</option>
+            <option>지하차도</option>
+        </select>
+
+        <input type="text" name="keyword" placeholder="시설물명을 입력하세요" required>
+        <button type="submit">검색</button>
+    </form>
+
+    {% for item in results %}
+        <hr>
+        <h3>🧱 시설물명: {{ item.시설명 }}</h3>
+        <p>📍 주소: {{ item.주소 }}</p>
+        <ul>
+            {% for spec in item.제원 %}
+                <li>{{ spec }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</body>
+</html>
