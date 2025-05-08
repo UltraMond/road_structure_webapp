@@ -53,7 +53,6 @@
     {% for item in results %}
         <hr>
         <h3>🧱 시설물명: {{ item.시설명 }}</h3>
-        <p>📍 주소: {{ item.주소 }}</p>
         <ul>
             {% for spec in item.제원 %}
                 <li>{{ spec }}</li>
